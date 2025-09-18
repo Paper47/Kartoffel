@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=3 uid="uid://caq4qpuq168p7"]
+
+[ext_resource type="PackedScene" uid="uid://hcti4lgv7ygg" path="res://landscape.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cgfmgw165dchd" path="res://player.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://sf7af1cen6jt" path="res://button.tscn" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://0of1572qrm2d" path="res://laser.gd" id="4_7mycd"]
+[ext_resource type="Texture2D" uid="uid://py1uis1skv" path="res://images/laser_body.png" id="5_7mycd"]
+[ext_resource type="Texture2D" uid="uid://nynsl4bvbv3m" path="res://images/laser_head.png" id="6_272bh"]
+[ext_resource type="PackedScene" uid="uid://fuwj3obbfbf" path="res://win_cond.tscn" id="7_272bh"]
+[ext_resource type="Texture2D" uid="uid://bfpehki6cn4q2" path="res://images/win_flag.png" id="8_5vw27"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
+
+[node name="Node" type="Node"]
+
+[node name="player" parent="." groups=["player"] instance=ExtResource("2_h2yge")]
+position = Vector2(160, 347)
+
+[node name="landscape" parent="." instance=ExtResource("1_0xm2m")]
+position = Vector2(-30, 525)
+
+[node name="landscape2" parent="." instance=ExtResource("1_0xm2m")]
+position = Vector2(411, 430)
+
+[node name="landscape3" parent="." instance=ExtResource("1_0xm2m")]
+position = Vector2(67, 277)
+rotation = 1.5707964
+
+[node name="landscape4" parent="." instance=ExtResource("1_0xm2m")]
+position = Vector2(-30, 337)
+
+[node name="landscape5" parent="." instance=ExtResource("1_0xm2m")]
+position = Vector2(67, -61)
+rotation = 1.5707964
+
+[node name="landscape6" parent="." instance=ExtResource("1_0xm2m")]
+position = Vector2(411, 207)
+
+[node name="landscape7" parent="." instance=ExtResource("1_0xm2m")]
+position = Vector2(-30, 114)
+
+[node name="landscape8" parent="." instance=ExtResource("1_0xm2m")]
+position = Vector2(316, -24)
+
+[node name="landscape9" parent="." instance=ExtResource("1_0xm2m")]
+position = Vector2(654, -24)
+
+[node name="button" parent="." node_paths=PackedStringArray("target_rigid") instance=ExtResource("3_h2yge")]
+position = Vector2(45, 581)
+target_rigid = NodePath("../laser")
+
+[node name="LaserHead" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(608, -170)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("6_272bh")
+
+[node name="laser" type="RigidBody2D" parent="."]
+script = ExtResource("4_7mycd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="laser"]
+position = Vector2(608, -55)
+rotation = 1.5707964
+scale = Vector2(10, 2)
+shape = SubResource("RectangleShape2D_7mycd")
+
+[node name="Sprite2D" type="Sprite2D" parent="laser"]
+texture_filter = 1
+position = Vector2(608, -55)
+scale = Vector2(2.5, 12.5)
+texture = ExtResource("5_7mycd")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 90.0
+offset_top = 276.0
+offset_right = 237.0
+offset_bottom = 299.0
+text = "FIND THE BUTTON!
+  THEN THE FLAG!!"
+
+[node name="win_cond" parent="." instance=ExtResource("7_272bh")]
+position = Vector2(-1, 0)
+
+[node name="WinFlag" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(749.00006, -38.000004)
+scale = Vector2(5, 5)
+texture = ExtResource("8_5vw27")

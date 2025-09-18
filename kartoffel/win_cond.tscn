@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://fuwj3obbfbf"]
+
+[ext_resource type="Script" uid="uid://t7q7c8mj4l5g" path="res://win_cond.gd" id="1_r80us"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wvtj"]
+size = Vector2(245, 199.5)
+
+[node name="win_cond" type="Area2D"]
+script = ExtResource("1_r80us")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(892.5, -59.75)
+shape = SubResource("RectangleShape2D_1wvtj")
+
+[node name="victoryscreen" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="victoryscreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 345.0
+offset_top = 94.0
+offset_right = -371.0
+offset_bottom = -370.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+color = Color(0.6188103, 0.5722407, 0.88102067, 1)
+
+[node name="Label" type="Label" parent="victoryscreen"]
+offset_left = 514.0
+offset_top = 169.0
+offset_right = 611.0
+offset_bottom = 192.0
+text = "YOU WIN!"
+horizontal_alignment = 1

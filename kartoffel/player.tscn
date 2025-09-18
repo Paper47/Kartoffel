@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgfmgw165dchd"]
+
+[ext_resource type="Script" uid="uid://cbg5l7q7y2grh" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://dk1ofy1ye1b4n" path="res://images/player_base.png" id="2_i3pqv"]
+[ext_resource type="Script" uid="uid://xjc8agh6nrxi" path="res://control.gd" id="3_i3pqv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_onrkg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_onrkg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_i3pqv")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_i3pqv")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -574.0
+offset_top = -323.0
+offset_right = -439.0
+offset_bottom = -259.0
